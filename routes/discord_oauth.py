@@ -8,7 +8,9 @@ load_dotenv()
 class DiscordOauth:
     client_id = os.getenv('CLIENT_ID')
     client_secret = os.getenv('CLIENT_SECRET')
-    redirect_uri = 'http://127.0.0.1:5000/dashboard'
+    import os
+client.redirect_uri = os.environ.get("REDIRECT_URI", "https://hsii-5rnc.onrender.com")
+
     scope = 'identify%20guilds'
     login_url = f'https://discord.com/api/oauth2/authorize?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope={scope}'
     token_url = 'https://discord.com/api/oauth2/token'
